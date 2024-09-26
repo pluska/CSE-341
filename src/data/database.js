@@ -9,9 +9,11 @@ const initDb = (cb) => {
     if (database) {
         return cb(null, database);
     }
-    MongoClient.connect(process.env.MONGODB_URI)
+    const client = new MongoClient(process.env.MONGODB_URI);
+
+    client.connect()
         .then((client) => {
-            database = client.db();
+            database = client.db(process.env.DB_NAME);
             return cb(null, database);
         })
         .catch((err) => {
@@ -20,7 +22,9 @@ const initDb = (cb) => {
 };
 
 const getDatabase = () => {
-    initDb();
+    if (!database) {
+        throw Error('Database not initialized');
+    }
     return database;
 };
 
