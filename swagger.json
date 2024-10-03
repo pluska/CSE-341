@@ -5,7 +5,7 @@
     "description": "First project for wk01 and wk02",
     "version": "1.0.0"
   },
-  "host": "https://cse-341-huiw.onrender.com",
+  "host": "cse-341-huiw.onrender.com",
   "basePath": "/",
   "schemes": [
     "https"
